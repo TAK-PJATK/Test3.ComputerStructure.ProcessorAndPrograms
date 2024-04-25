@@ -182,40 +182,6 @@ Although the structure of typical modern computer (see Figure 2) essentially doe
 
 
 
-
----
-author:
-- PJATK
-- Dominika Pawlik
-contributor: "calibre (7.8.0) \\[https://calibre-ebook.com\\]"
-date:
-- 2024-04-24
-- "0101-01-01T00:00:00+00:00"
-identifier:
-- a29c5bf6-ae84-488f-b72f-72d3f1e83c07
-- a29c5bf6-ae84-488f-b72f-72d3f1e83c07
-language: en
-title: Computer Structure. Processor and Programs. TAK Test 3
----
-
-![](./cover_image.jpg)
-
-[]{#titlepage.xhtml}
-
-<div>
-
-```{=html}
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%" viewbox="0 0 1200 1600" preserveaspectratio="none">
-```
-`<image width="1200" height="1600" xlink:href="cover_image.jpg">`{=html}`</image>`{=html}
-```{=html}
-</svg>
-```
-
-</div>
-
-[]{#contents.xhtml}
-
 ## Table of Contents
 
 -   [Computer structure](#main.xhtml#caption1)
@@ -227,82 +193,8 @@ title: Computer Structure. Processor and Programs. TAK Test 3
 -   [Landscape of registers](#main-6.xhtml)
 -   [Bit-length and operating modes](#main-7.xhtml)
 
-[]{#jacket.xhtml}
 
-::: calibre1
-::: cbj_banner
-+-----------------------------------+-----------------------------------+
-| **Computer Structure. Processor   |                                   |
-| and Programs. TAK Test 3**        |                                   |
-+-----------------------------------+-----------------------------------+
-|                                   |                                   |
-+-----------------------------------+-----------------------------------+
-| *Dominika Pawlik & PJATK*         |                                   |
-+-----------------------------------+-----------------------------------+
-| \                                 |                                   |
-+-----------------------------------+-----------------------------------+
-|                                   |                                   |
-+-----------------------------------+-----------------------------------+
-| -------------------------------   |                                   |
-+-----------------------------------+-----------------------------------+
-|                                   |                                   |
-+-----------------------------------+-----------------------------------+
-
-::: cbj_banner
-\
-\
-:::
-
-::: cbj_banner
-£ GBP
-:::
-
-::: cbj_banner
-\$ USD
-:::
-
-::: cbj_banner
-Goodreads:
-:::
-
-::: cbj_banner
-Pages: 28
-:::
-
-::: cbj_banner
-Words: 7914
-:::
-
-::: cbj_banner
-Uploaded: Fri Apr 19 09:54:28 2024
-:::
-
-::: cbj_banner
-Sent to Kindle: 08 Apr 2024
-:::
-
-::: cbj_banner
-\
-\
-:::
-
-::: cbj_banner
-:::
-:::
-
-::: cbj_banner
-Goodreads: []()
-:::
-
-::: cbj_banner
-:::
-:::
-
-[]{#main.xhtml}
-
-[]{#main.xhtml#caption1}
-
-## []{#main.xhtml#bookmark0 .calibre8}Computer structure {.calibre7}
+## Computer structure
 
 After the previous lectures --- serving as an introduction --- we can
 now proceed to answering the more general questions:
@@ -325,7 +217,7 @@ other detailed topics.
 
 []{#main-1.xhtml}
 
-### []{#main-1.xhtml#bookmark0 .calibre8}Modern integrated circuits {.calibre12}
+### Modern integrated circuits
 
 In the lecture "Integrated circuits", we dealt with logic gates and
 larger digital circuits built from them. In these years, logic gates are
