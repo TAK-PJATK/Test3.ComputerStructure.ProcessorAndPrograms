@@ -3,7 +3,7 @@ Test3.ComputerStructure.ProcessorAndPrograms
 
 # Computer structure  
   
-After the previous lectures ? serving as an introduction ? we can now proceed to answering the more general questions:  
+After the previous lectures - serving as an introduction - we can now proceed to answering the more general questions:  
   
 * What serves which purpose in a computer?  
 * What are the subcomponents of a processor?
