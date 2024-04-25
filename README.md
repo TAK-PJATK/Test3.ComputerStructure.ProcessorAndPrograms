@@ -182,288 +182,8 @@ Although the structure of typical modern computer (see Figure 2) essentially doe
 
 
 
-## Table of Contents
 
--   [Computer structure](#main.xhtml#caption1)
--   [Modern integrated circuits](#main-1.xhtml)
--   [General structure of a computer](#main-2.xhtml)
--   [Processor](#main-3.xhtml)
--   [Pipelining](#main-4.xhtml)
--   [Parallelism and concurrency](#main-5.xhtml)
--   [Landscape of registers](#main-6.xhtml)
--   [Bit-length and operating modes](#main-7.xhtml)
-
-
-## Computer structure
-
-After the previous lectures --- serving as an introduction --- we can
-now proceed to answering the more general questions:
-
-•    What serves which purpose in a computer?
-
-•    What are the subcomponents of a processor?
-
-The following lectures will expand some topics appearing on this one
-(e.g. "how does a computer run a program?"), though they'll also touch
-other detailed topics.
-
--   [Modern integrated circuits](#main-1.xhtml)
--   [General structure of a computer](#main-2.xhtml)
--   [Processor](#main-3.xhtml)
--   [Pipelining](#main-4.xhtml)
--   [Parallelism and concurrency](#main-5.xhtml)
--   [Landscape of registers](#main-6.xhtml)
--   [Bit-length and operating modes](#main-7.xhtml)
-
-[]{#main-1.xhtml}
-
-### Modern integrated circuits
-
-In the lecture "Integrated circuits", we dealt with logic gates and
-larger digital circuits built from them. In these years, logic gates are
-esentially no more manufactured as separate products; instead, the
-smallest building blocks are [integrated circuits ]{.calibre4}which
-combine multiple gates according to a particular application: starting
-from the simpler ones described in the previous lecture
-(adders, flip-flops, comparators etc.), through much more complex ones.
-A typical integrated circuit available in an electronic shop will now
-look like this:
-
-::: cbj_banner
-![](./main-1.jpg){.calibre13}
-
-Figure 1. The look of an example integrated circuit.
-
-(Source: <https://en.wikipedia.org/wiki/Integrated_circuit>)
-:::
-
-On the picture, we see a cover, hiding the proper circuit, made mostly
-of silicon. Here, physical characteristics are crucial for the
-efficiency of computation. We need a clean silicon crystal, sliced into
-so-called [wafers]{.calibre5}, of thickness 1 mm or less. On that, the
-transistors building up the whole circuit are placed.
-
-#### []{#main-1.xhtml#bookmark1}Miniaturization {.calibre14}
-
-The computing efficiency of an integrated circuit depends essentially on
-two factors: the number of transistors, and their execution speed. In
-[both]{.calibre5} cases, the key for success is [miniaturization:
-]{.calibre4}on one hand, it allows fitting more transistors in a given
-space; on the other hand, (as we explain on the lecture "Integrated
-circuits") smaller transistors need less time to propagate the electric
-signal, which allows a higher system clock frequency. The need for
-miniaturizing is even larger given that --- sadly --- the current
-technological limitations only allow a [single layer ]{.calibre4}of
-transistors placed directly on the silicon wafers, (If we could place
-them in multiple layers, we would clearly fit much more of them inside a
-typical computer).
-
-At this moment, typical transistor diameters are [a few or a dozen
-nanometers ]{.calibre4}(where 1 nm = 10^-9^ m). For comparison, that is
-about 1 over 10,000 of the thickness of a human hair. This
-already allows building huge integrated circuits: one of the most
-powerful processors currently, NVIDIA H100, contains around 80 billion
-transistors.
-
-Looking at the history, since the 1960's, shrinking transistors --- and,
-accordingly, increasing their number in currently available computer
-models --- has been the [key factor ]{.calibre4}for the growing trend in
-computer efficiency, and has been behaving [exponentially,
-]{.calibre4}in compliance with the empirical [Moore's law
-]{.calibre4}(which we already described in the lecture "Introduction"):
-"the number of transistors double around every 2 years". In these years,
-however, we seem to be approaching an important technological [barrier,
-]{.calibre4}where transistors get nearly as tiny as single atoms! (For
-example, we already have the technology to produce transistors of
-diameter 2nm and thickness 0,3 nm; the smaller of these numbers is the
-size of single carbon atom).
-
-Hence, it seems increasingly more possible that, in a dozen of years,
-Moore's law may stop describing reality, and the actual growth of
-computers' efficiency will significantly slow down comparing to
-its predictions. On the other hand, we cannot make such claims for
-certain, e.g, due to a possibility of technologic developments in other
-directions than miniaturization (potential multi-layer circuits, or e.g,
-quantum computing).
-
-#### []{#main-1.xhtml#bookmark2}This area is complex {.calibre14}
-
-Starting from this lecture, we'll deal almost entirely with digital
-circuits containing many thousands of logic gates. These are called VLSI
-circuits [(very large scale of integration).]{.calibre5} (One can also
-speak of small scale up to 10 gates, medium 10-100 gates, and large up
-to a few thousand). This means that, speaking of circuit structure and
-related technology, we will omit many details.
-
-These details can be extremely important, as shown by recently
-introduced US sanctions on transferring technologies and certain kinds
-of integrated circuits (in particular, NVIDIA H100) to China, On the
-other hand, the importance (and complexity) of effectively producing
-even relatively simple circuits has been demonstrated by their market
-shortages due to supply chain issues during the Covid-19 epidemic.
-
-[]{#main-2.xhtml}
-
-### []{#main-2.xhtml#bookmark0 .calibre8}General structure of a computer {.calibre12}
-
-We will now present a simplified [model of a computer ]{.calibre4}which
-will not touch e.g, the following aspects:
-
-•    performing computations outside the processor
-
-•    classification of input/output devices
-
-•    multi-core computing
-
-The simplest scheme of computer structure may look as follows:
-
-::: cbj_banner
-![](./main-2.png){.calibre13}
-:::
-
-#### []{#main-2.xhtml#bookmark1}Processor {.calibre14}
-
-The heart of a computer is the [processor ]{.calibre4}--- an integrated
-circuit containing an astronomical number of transistors (together with
-its cover), performing arithmetic and logic computations based on
-the specified program. We will describe its structure in more detail in
-another section below.
-
-#### []{#main-2.xhtml#bookmark2}Memory {.calibre14}
-
-The computer [memory ]{.calibre4}comprises of all integrated circuits
-and other devices which allow storing information.
-
-Some amount of memory can be found inside the processor, which allows
-storing the most relevant temporary results "handy", and thus speeds up
-computations, (Specifically, that consists of processor regsiters and
-cache). However, that in-proeessor memory is limited to relatively small
-amount, connected with current computations, while in most applications
-we need to store much more data (giga- or even terabytes) for a longer
-time --- think of hours or even years. Therefore, a necessary component
-of a modern computer structure is [memory ]{.calibre4}which is separate
-from the processor (whose examples are: RAM, hard drives, USB drives,
-CD/DVD disks etc,),
-
-A deeper discussion of memory, its types and ways of functioning will
-appear on a later lecture. For now, let us remark a fundamental split
-(from the viewpoint of functionality and meaning for the general
-computer structure) of memory into two kinds:
-
-[•    Read-only memory (ROM) ]{.calibre4}stores data which are [not
-going to change, ]{.calibre4}e.g, the startup routines for the computer.
-
-This type of memory does not require constant supply of electric power.
-It's programmed once for all, during manufacturing process, (Note though
-that the "ROM" term happens also to be used in a broader meaning, and
-does not always necessarily imply actually being "read-only"),
-
-[•    Random access memory (RAM) ]{.calibre4}stores the data, programs,
-and work results, allowing multiple modifications at later times.
-
-It's usually much larger than ROM, and requires electric power to
-preserve the information (in relation to how we described registers in
-the lecture "Integrated circuits").
-
-For evaluating memory types, the important properties are: speed,
-capacity, and (as always in life) production costs. Sadly, it's hard in
-practice to optimize all these properties at the same time. Therefore,
-computers often contain various types of RAM, We will describe this in
-more detail in the future. Here, we'll only mention a [split of RAM
-]{.calibre4}into two kinds: [static ]{.calibre4}RAM (SRAM) and [dynamic
-]{.calibre4}RAM (DRAM),
-
-DRAM requires [refreshing]{.calibre5} (to prevent discharging capacitors
-from which it is built), by periodical write operations of the already
-saved values. That makes them slower than SRAM which needs no such
-refreshing. On the other hand, DRAM cells consist of less elements,
-which allows cheaper manufacturing and hence larger capacity. Therefore,
-most memory dices are DRAM, SRAM is also used in computers: mostly in
-those places where the speed of reading and writing is crucial, while
-the amount of data is small enough to make the increased price
-affordable (e.g, inside the processor).
-
-#### []{#main-2.xhtml#bookmark3}Other components {.calibre14}
-
-The [input/output devices ]{.calibre4}(also called [I/O
-devices]{.calibre5}, or [peripherals)]{.calibre5} allow communication
-between the machine and the user. These include e.g, keyboard, mouse,
-screen, but also the network card. So, these are not just the "devices
-connected via USB or other ports" --- they can also be
-physically located [inside]{.calibre5} the computer box, or even be
-integrated with the motherboard.
-
-The [device controllers ]{.calibre4}are complex specialized integrated
-circuits which allow handling information travelling to and from
-input/output devices. This means that e.g, processing images or
-sound happens, in a large part, outside the computer processor but in
-the controller of the appropriate I/O device.
-
-The [system clock ]{.calibre4}is an electronic device which sends an
-electric signal regularly switching its value between "0" and "1", This
-allows synchronization of data processing in the computer (the
-importance of which we already mentioned in the lecture "Integrated
-circuits").
-
-The [buses ]{.calibre4}are purposed to transfer signals between the
-various devices mentioned above. We distinguish three kinds of these:
-
-[•    data buses ]{.calibre4}which transfer the actual data;
-
-[•    control buses ]{.calibre4}which send signals controlling the data
-transfer (e.g, announcing whether a write or read operation will happen;
-specifying the amount of data to be transfered; acknowledging receiving
-data successfully; also interruption signals);
-
-this type of buses is also responsible for propagating the system clock
-signal;
-
-[•    address buses ]{.calibre4}which send information about where data
-should be stored to / read from.
-
-To increase the throughput, data transfer via the buses may happen in
-parallel, along multiple channels and in both directions at the same
-time (in case of [full duplex]{.calibre5} buses). Still, the
-propagation time is one of the bottlenecks for computer efficiency.
-That's one of the reason for which the recent evolution of computer
-structure tends to incorporate more subsystems into the processor.
-
-#### []{#main-2.xhtml#bookmark4}Harvard architecture {.calibre14}
-
-In the above diagram and description, we have not introduced a
-distinction between [data memory ]{.calibre4}and [instruction memory.
-]{.calibre4}The lack of such distinction is postulated by the so-called
-[von Neumann's architecture ]{.calibre4}--- a model developed by John
-von Neumann, John W. Mauchly, and John
-
-Presper Eckert in 1945, This unification of memory is the main
-difference between that model and the competing idea, called [Harvard
-architecture. ]{.calibre4}In the Harvard architecture, the basic
-scheme looks as follows:
-
-::: cbj_banner
-![](./main-3.png){.calibre13}
-:::
-
-An advantage of the Harvard architecture is its speed, as it fosters
-simultaneous fetching of instructions and data. Its disadvantage,
-though, is a need for separate buses, and a much more convoluted support
-for user-provided programs. In effect, this architecture is mostly used
-in devices running algorithms that have been hard-coded at the
-manufacturing stage. The main examples are digital signal processors
-(used e.g, for processing sound in mobile technology) or
-micro-controllers (used to drive electronic devices).
-
-Although the structure of typical modern computer (see Figure 2)
-[essentially]{.calibre5} does not follow the Harvard model, we can still
-find its influence in some places. As already mentioned, a small
-fraction of memory is placed inside the processor (to reduce the data
-transmission time). In some parts of that memory, the split between
-instruction memory and data memory is applied.
-
-[]{#main-3.xhtml}
-
-### []{#main-3.xhtml#bookmark0 .calibre8}Processor {.calibre12}
+### Processor
 
 The [processor ]{.calibre4}is the central brain of a computer ---
 accepting and executing orders regarding performing computations and
@@ -474,9 +194,7 @@ where computations in a standard computer are handled by a set a few (or
 more in some super-computers) internally connected CPUs, which are now
 collectively called a [processor.]{.calibre4}
 
-::: cbj_banner
-![](./main-4.jpg){.calibre13}
-:::
+![](./main-4.jpg)
 
 Figure 4 shows a general structure model of a CPU, indicating a few
 basic functional modules. That model, at least roughly, has been
@@ -491,11 +209,9 @@ subcomponents belonging to the MMU),
 Below, we will describe the basic processor modules according to the
 general picture (shown in Figure 4).
 
-::: cbj_banner
-![](./main-5.jpg){.calibre13}
-:::
+![](./main-5.jpg)
 
-#### []{#main-3.xhtml#bookmark1}Execution unit {.calibre14}
+#### Execution unit
 
 A key component on the scheme is the [execution unit ]{.calibre4}(EU),
 in which all the computations take place. The [arithmetic-logic unit
@@ -682,39 +398,21 @@ The idea is to simultaneously execute different phases of multiple instructions.
 
 #### Complications
 
-There are, however, a few reasons for which that may not always succeed.
-A classic example is when some arithmetic computation order [B
-]{.calibre4}happens directly after another such order [A ]{.calibre4}but
-it [depends]{.calibre5}[ ]{.calibre4}on the result of [A,
-]{.calibre4}i.e. that result is one of the arguments for [B.
-]{.calibre4}Then, in phase [ID ]{.calibre4}(for [B) ]{.calibre4}we will
-need to fetch from the registers a value (the result of [A)
-]{.calibre4}which would be only stored that later, namely, in phase [WB
-]{.calibre4}for [A!]{.calibre4}
+There are, however, a few reasons for which that may not always succeed. A classic example is when some arithmetic computation order happens directly after another such order A but it on the result of A, i.e. that result is one of the arguments for B. Then, in phase ID (for B) we will need to fetch from the registers a value (the result of A) which would be only stored that later, namely, in phase WB for A!
 
-The simplest way of dealing with such case is to simply [introduce a
-delay. ]{.calibre4}Then, the execution can look e.g. like this:
+The simplest way of dealing with such case is to simply introduce a delay. Then, the execution can look e.g. like this:
 
-::: cbj_banner
-::: cbj_banner
-![](./main-8.jpg){.calibre13}
-:::
-:::
+![](./main-8.jpg)
 
 Clock cycles
 
-Figure 2. The simplest solution of a data hazard --- by introducing a
-large delay.
+Figure 2. The simplest solution of a data hazard --- by introducing a large delay.
 
-Situations leading to such delays are called [hazards.
-]{.calibre4}Generally, they split into [3 ]{.calibre4}kinds:
+Situations leading to such delays are called hazards. Generally, they split into 3 kinds:
 
-[•    Data hazard ]{.calibre4}--- an order needs data which are not yet
-ready.
-
-[•    Control hazard ]{.calibre4}--- when executing a jump order, the
-processor may not be able to determine which order is going to be
-executed as the next one.
+* Data hazard --- an order needs data which are not yet ready.
+  
+* Control hazard --- when executing a jump order, the processor may not be able to determine which order is going to be executed as the next one.
 
 This problem is evident for a [conditional jump,]{.calibre5}[
 ]{.calibre4}when the choice of the next order can depend on some
@@ -789,23 +487,12 @@ technique (see below) is used.
 :::
 :::
 
-::: cbj_banner
-::: cbj_banner
-![](./main-11.jpg){.calibre13}
-:::
-:::
+![](./main-11.jpg)
 
-::: cbj_banner
-::: cbj_banner
-![](./main-12.jpg){.calibre13}
-:::
-:::
+![](./main-12.jpg
 
-::: cbj_banner
-::: cbj_banner
-![](./main-13.jpg){.calibre13}
-:::
-:::
+![](./main-13.jpg)
+
 
 Figure 4. A comparison of resolving a control hazard with two
 techniques: delay (upper row) vs. speculative execution (lower row).
