@@ -142,3 +142,10 @@ follows:
 
 
 
+
+An advantage of the Harvard architecture is its speed, as it fosters simultaneous fetching of instructions and data. Its disadvantage, though, is a need for separate buses, and a much more convoluted support for user-provided programs. In effect, this architecture is mostly used in devices running algorithms that have been hard-coded at the manufacturing stage. The main examples are digital signal processors (used e.g, for processing sound in mobile technology) or micro- controllers (used to drive electronic devices).  
+  
+Although the structure of typical modern computer (see Figure 2) essentially does not follow the Harvard model, we can still find its influence in some places. As already mentioned, a small fraction of memory is placed inside the processor (to reduce the data transmission time). In some parts of that memory, the split between instruction memory and data memory is applied.  
+  
+
+
