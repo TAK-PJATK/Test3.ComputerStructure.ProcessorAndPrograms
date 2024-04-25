@@ -16,6 +16,10 @@ In the lecture "Integrated circuits", we dealt with logic gates and larger digit
 
 [![Figure 1. The look of an example integrated circuit.
 (Source: https://en.wikipedia.org/wiki/Integrated_circuit)](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/IC.png?raw=true)](https://en.wikipedia.org/wiki/Integrated_circuit)  
+Figure 1. The look of an example integrated circuit.  
+(Source: https://en.wikipedia.org/wiki/Integrated_circuit)  
+
+  
 
 
 
