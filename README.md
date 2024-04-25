@@ -654,57 +654,33 @@ The comparison of both considered models is summarized below.
 ![](./main-6.jpg){.calibre13}
 :::
 
-# []{#main-3.xhtml#bookmark5 .calibre8}Processor and programs {.calibre16}
+# Processor and programs  
+  
+In this lecture, we continue discussing the procesor. This time, however, we will focus less on its hardware structure, and more on managing execution of whole sequences of orders and the most important optimization techniques used there.
+  
+### Pipelining  
+  
+#### The idea 
 
-In this lecture, we continue discussing the procesor. This time,
-however, we will focus less on its hardware structure, and more on
-managing execution of whole [sequences of orders ]{.calibre4}and the
-most important optimization techniques used there.
+As we said previously, the internal structure of the processor often reflects the RISC approach. We will now discuss, how (very roughly) a processor order is executed in the RISC model. It splits into 5 main phases:
 
-[]{#main-4.xhtml}
+1.    IF (Instruction Fetch): retrieving the next order to be executed (from the instruction cache).
 
-### []{#main-4.xhtml#bookmark0 .calibre8}Pipelining {.calibre12}
+2.    ID (Instruction Decode): This decodes the order, i.e, makes the initial steps to learn the addresses of its arguments, initiates retrieving values of these arguments, and sends the necessary controlling signals.
 
-#### []{#main-4.xhtml#bookmark1}The idea {.calibre14}
+3.    EX (Execute): The proper computations take place in the ALU.
 
-As we said previously, the internal structure of the processor often
-reflects the RISC approach. We will now discuss, how (very roughly) a
-processor order is executed in the RISC model. It splits into [5 main
-phases:]{.calibre4}
+4.    MA (Memory Access): If necessary, data are read from or saved into RAM.
 
-1\.    IF ([Instruction Fetch):]{.calibre5} retrieving the next order to
-be executed (from the instruction cache).
+5.    WB (Write Back): The result of the instruction is stored into the registers.
 
-2\.    ID ([Instruction Decode):]{.calibre5} This [decodes]{.calibre5}
-the order, i.e, makes the initial steps to learn the addresses of its
-arguments, initiates retrieving values of these arguments, and sends the
-necessary controlling signals.
+In case of sequential execution, where one CPU executes at most one order at a time, this would mean that e.g, the instruction decode block would be idle during the work of ALU, and conversely. That's a clear inoptimality, which is typically avoided (since the 1980's) by the technique known as pipelining.
 
-3\.    EX [(Execute):]{.calibre5} The proper computations take place in
-the ALU.
+The idea is to simultaneously execute different phases of multiple instructions. In the ideal situation, in each moment the processor would execute the IF, ID, EX, MA and WB phases for 5 consecutive orders:
 
-4\.    MA ([Memory Access):]{.calibre5} If necessary, data are read from
-or saved into RAM.
+(./main-7.png)
 
-5\.    WB ([Write Back):]{.calibre5} The result of the instruction is
-stored into the registers.
-
-In case of [sequential execution, ]{.calibre4}where one CPU executes at
-most one order at a time, this would mean that e.g, the instruction
-decode block would be idle during the work of ALU, and
-conversely. That's a clear inoptimality, which is typically avoided
-(since the 1980's) by the technique known as [pipelining.]{.calibre4}
-
-The idea is to [simultaneously]{.calibre5} execute [different
-phases]{.calibre5} of multiple instructions. In the ideal situation, in
-each moment the processor would execute the IF, ID, EX, MA and WB phases
-for 5 consecutive orders:
-
-::: cbj_banner
-![](./main-7.png){.calibre13}
-:::
-
-#### []{#main-4.xhtml#bookmark2}Complications {.calibre14}
+#### Complications
 
 There are, however, a few reasons for which that may not always succeed.
 A classic example is when some arithmetic computation order [B
