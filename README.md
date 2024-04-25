@@ -46,9 +46,99 @@ We will now present a simplified model of a computer which will not touch e.g, t
   
 The simplest scheme of computer structure may look as follows:  
 
-![Figure 2. The general structure of a computer.](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/TheGeneralStructureofacomputer.PNG?raw=true) 
-  
+![Figure 2. The general structure of a computer.](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/TheGeneralStructureofacomputer.PNG?raw=true)   
 Figure 2. The general structure of a computer.  
+  
+### Processor  
+The heart of a computer is the processor — an integrated circuit
+containing an astronomical number of transistors (together with its
+cover), performing arithmetic and logic computations based on
+the specified program. We will describe its structure in more detail in
+another section below.  
+  
+### Memory  
+The computer memory comprises of all integrated circuits and other
+devices which allow storing information.
+Some amount of memory can be found inside the processor, which
+allows storing the most relevant temporary results “handy”, and thus
+speeds up computations, (Specifically, that consists of
+processor regsiters and cache). However, that in-proeessor memory is
+limited to relatively small amount, connected with current
+computations, while in most applications we need to store much more
+data (giga- or even terabytes) for a longer time — think of hours or
+even years. Therefore, a necessary component of a modern computer
+structure is memory which is separate from the processor
+(whose examples are: RAM, hard drives, USB drives, CD/DVD disks
+etc,),
+A deeper discussion of memory, its types and ways of functioning will
+appear on a later lecture. For now, let us remark a fundamental split
+(from the viewpoint of functionality and meaning for the general
+computer structure) of memory into two kinds:
+• Read-only memory (ROM) stores data which are not going to
+change, e.g, the startup routines for the computer.
+This type of memory does not require constant supply of electric power.
+It’s programmed once for all, during manufacturing process, (Note
+though that the “ROM” term happens also to be used in a broader
+meaning, and does not always necessarily imply actually being “read-
+only”),
+• Random access memory (RAM) stores the data, programs, and
+work results, allowing multiple modifications at later times.
+It’s usually much larger than ROM, and requires electric power to
+preserve the information (in relation to how we described registers in
+the lecture “Integrated circuits”).
+For evaluating memory types, the important properties are: speed,
+capacity, and (as always in life) production costs. Sadly, it’s hard in
+practice to optimize all these properties at the same time. Therefore,
+computers often contain various types of RAM, We will describe this in
+more detail in the future. Here, we’ll only mention a split of RAM into
+two kinds: static RAM (SRAM) and dynamic RAM (DRAM),
+DRAM requires refreshing (to prevent discharging capacitors from which
+it is built), by periodical write operations of the already saved values.
+That makes them slower than SRAM which needs no such refreshing.
+On the other hand, DRAM cells consist of less elements, which allows
+cheaper manufacturing and hence larger capacity. Therefore, most
+memory dices are DRAM, SRAM is also used in computers: mostly in
+those places where the speed of reading and writing is crucial, while
+the amount of data is small enough to make the increased price
+affordable (e.g, inside the processor).
+
+### Other components  
+  
+The input/output devices (also called I/O devices, or peripherals) allow communication between the machine and the user. These include e.g, keyboard, mouse, screen, but also the network card. So, these are not just the “devices connected via USB or other ports” — they can also be physically located inside the computer box, or even be integrated with the motherboard.   
+  
+The device controllers are complex specialized integrated circuits which allow handling information travelling to and from input/output devices. This means that e.g, processing images or sound happens, in a large part, outside the computer processor but in the controller of the appropriate I/O device.  
+  
+The system clock is an electronic device which sends an electric signal
+regularly switching its value between “0” and “1”, This allows
+synchronization of data processing in the computer (the importance of
+which we already mentioned in the lecture “Integrated circuits”).
+The buses are purposed to transfer signals between the various devices
+mentioned above. We distinguish three kinds of these:
+• data buses which transfer the actual data;
+• control buses which send signals controlling the data transfer (e.g,
+announcing whether a write or read operation will happen; specifying
+the amount of data to be transfered; acknowledging receiving data
+successfully; also interruption signals);
+this type of buses is also responsible for propagating the system clock
+signal;
+• address buses which send information about where data should be
+stored to / read from.
+To increase the throughput, data transfer via the buses may happen in
+parallel, along multiple channels and in both directions at the same
+time (in ease of full duplex buses). Still, the propagation time is one of
+the bottlenecks for computer efficiency. That’s one of the reason for
+which the recent evolution of computer structure tends to incorporate
+more subsystems into the processor.
+Harvard architecture
+In the above diagram and description, we have not introduced a
+distinction between data memory and instruction memory. The lack
+of such distinction is postulated by the so-called von Neumann’s
+architecture — a model developed by John von Neumann, John W,
+Mauehlv, and John
+Presper Eckert in 1945, This unification of memory is the main
+difference between that model and the competing idea, called Harvard
+architecture. In the Harvard architecture, the basic scheme looks as
+follows:
 
 
 
