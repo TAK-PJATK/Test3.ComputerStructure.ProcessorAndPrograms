@@ -370,9 +370,9 @@ of instructions allowed in the machine code.
 
 The comparison of both considered models is summarized below.
 
-::: cbj_banner
+
 ![](./main-6.jpg)
-:::
+
 
 
 
@@ -508,11 +508,11 @@ from phase [EX ]of [A ]to phase [EX ]of
 [B), ]To be able to do this, we need a special physical
 connection (a "bypass\") in the processor.
 
-::: cbj_banner
-::: cbj_banner
+
+
 ![](./main-9.jpg)
-:::
-:::
+
+
 
 • For control hazards, one can use [speculative execution:
 ]the processor [guesses] which branch will run,
@@ -527,11 +527,11 @@ that these kinds of predictions have ea. 90% of accuracy. Unfortunately,
 a wrong guess leads to a delay. Therefore, if possible, another
 technique (see below) is used.
 
-::: cbj_banner
-::: cbj_banner
+
+
 ![](./main-10.jpg)
-:::
-:::
+
+
 
 ![](./main-11.jpg)
 
@@ -579,7 +579,7 @@ here is that, among a pair of [completely independent][
 whole code --- and a smart choice of that may allow avoiding some hazard
 (see example on Figure 5).
 
-::: cbj_banner
+
 ![](./main-14.jpg)
 
 Figure 5. Resolving a control hazard (same as in Figure 4) with
@@ -590,7 +590,7 @@ conditional jump B, we gain time for deciding whether to make the jump.
 This removes the need for guessing, and also the threat of wasting a
 cycle in case of a wrong guess. Thanks to this, in the second variant,
 execution is faster by 1 cycle comparing to Figure 4.
-:::
+
 
 Of course, that kind of "perceptivity\" of a processor requires it to do
 more computations and have a more complex structure; still, this kind of
@@ -620,9 +620,9 @@ simultaneously thanks to using multiple execution units. Since 1998,
 this approach has become standard in processor design. This means that,
 currently, executing processor orders looks as follows:
 
-::: cbj_banner
+
 ![](./main-15.png)
-:::
+
 
 Multiplication can be also applied not to whole execution units, but
 just the ALU or FPU units.
@@ -638,9 +638,9 @@ other hand, it allowed avoiding various types of potential hazards. For
 example, once we allow simultaneous execution of phase MA for multiple
 instructions, we face potential conflicts in accessing the RAM memory.
 
-::: cbj_banner
+
 ![](./main-16.jpg)
-:::
+
 
 are equivalent in terms of their desired effect; however, they differ in
 that the version on the left contains a hazard (regarding variable a),
@@ -829,9 +829,9 @@ For example, if we can use 4 processors, and 10% of the computations
 must be sequential, than the [maximal] possible factor of
 acceleration will be:
 
-::: cbj_banner
+
 ![](./main-17.png)
-:::
+
 
 Therefore, if running such a program fully sequentially took 10 seconds,
 then there is no chance on 4 processors to run it in less than 3
@@ -882,9 +882,9 @@ be sent).
 
 In the x86 family, these look as follows:
 
-::: cbj_banner
+
 ![](./main-18.jpg)
-:::
+
 
 \*AX --- used in arithmetic operations
 
@@ -908,20 +908,9 @@ Figure 7. The general purpose registers in the x86 architecture.
 (Role descriptions taken from: https
 ://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture)
 
-In this picture, directly neighboring rows do not represent separate
-memory but just another way of viewing the same memory. For example, EAX
-is physically [a part of ]RAX, consisting of its 32 [lower
-](or: [younger)] bits. Similarly, AX is the lower
-half of EAX, AH and AL are respectively the higher [(H)] and
-lower [(L)] halves of AX, EDI is the lower half of RDI, etc.
+In this picture, directly neighboring rows do not represent separate memory but just another way of viewing the same memory. For example, EAX is physically _a part of_  RAX, consisting of its 32 _lower_ (or: _younger_) bits. Similarly, AX is the lower half of EAX, AH and AL are respectively the higher (H) and lower (L) halves of AX, EDI is the lower half of RDI, etc.
 
-These half-divisions exist for historical reasons: in the older times,
-the only available registers were shorter than 64 bits. By keeping them,
-we achieve backwards compatibility, i.e, the ability to execute programs
-which were compiled for an older architecture (in which the machine code
-could [e.g. ]refer to the register [CX ]and, even
-more importantly, could [assume] that [CX ]is
-16-bit long).
+These half-divisions exist for historical reasons: in the older times, the only available registers were shorter than 64 bits. By keeping them, we achieve backwards compatibility, i.e, the ability to execute programs which were compiled for an older architecture (in which the machine code could e.g. refer to the register CX and, even more importantly, could _assume_ that CX is 16-bit long).
 
 While the above registers can be read and written by machine code (and
 thus also by an assembler programmer), they can also --- depending on
