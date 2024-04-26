@@ -57,8 +57,8 @@ the specified program. We will describe its structure in more detail in
 another section below.  
   
 ### Memory  
-The computer memory comprises of all integrated circuits and other
-devices which allow storing information.
+The computer memory comprises of all integrated circuits and other devices which allow storing information.  
+
 Some amount of memory can be found inside the processor, which
 allows storing the most relevant temporary results “handy”, and thus
 speeds up computations, (Specifically, that consists of
@@ -69,23 +69,27 @@ data (giga- or even terabytes) for a longer time — think of hours or
 even years. Therefore, a necessary component of a modern computer
 structure is memory which is separate from the processor
 (whose examples are: RAM, hard drives, USB drives, CD/DVD disks
-etc,),
+etc,).  
+
 A deeper discussion of memory, its types and ways of functioning will
 appear on a later lecture. For now, let us remark a fundamental split
 (from the viewpoint of functionality and meaning for the general
-computer structure) of memory into two kinds:
-• Read-only memory (ROM) stores data which are not going to
+computer structure) of memory into two kinds:  
+
+* Read-only memory (ROM) stores data which are not going to
 change, e.g, the startup routines for the computer.
 This type of memory does not require constant supply of electric power.
 It’s programmed once for all, during manufacturing process, (Note
 though that the “ROM” term happens also to be used in a broader
 meaning, and does not always necessarily imply actually being “read-
-only”),
-• Random access memory (RAM) stores the data, programs, and
+only”).  
+
+* Random access memory (RAM) stores the data, programs, and
 work results, allowing multiple modifications at later times.
 It’s usually much larger than ROM, and requires electric power to
 preserve the information (in relation to how we described registers in
 the lecture “Integrated circuits”).
+
 For evaluating memory types, the important properties are: speed,
 capacity, and (as always in life) production costs. Sadly, it’s hard in
 practice to optimize all these properties at the same time. Therefore,
