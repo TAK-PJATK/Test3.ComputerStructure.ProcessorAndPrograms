@@ -938,28 +938,14 @@ registers (instruction pointer, flags). That still does not exhaust
 all registers available in the processor; however, these are the most
 important ones from the user's viewpoint.
 
-[]{#main-7.xhtml}
 
-### []{#main-7.xhtml#bookmark0 .calibre8}Bit-length and operating modes {.calibre12}
+### Bit-length and operating modes 
 
-As we already saw in Figure 7, address registers can have 64 bits. This
-is the standard in modern processors and there are no reasons for it to
-change soon.
+As we already saw in Figure 7, address registers can have 64 bits. This is the standard in modern processors and there are no reasons for it to change soon.  
+  
+Until the 2000's, most processors only exposed 32-bit address registers. This allowed referring to 2^32 different memory addresses. Assuming that each address specifies a RAM memory location with 1 byte's precision, this produced an addressing scheme capable of covering 2^32*B = 4 GiB --- _way above_ the typical RAM size in the 1990's, but _below_ today's standards.
 
-Until the 2000's, most processors only exposed 32-bit address registers.
-This allowed referring to 2^32^ different memory addresses. Assuming
-that each address specifies a RAM memory location with 1 byte's
-precision, this produced an addressing scheme capable of covering 2^32^
-B = 4 GiB --- [way above ]{.calibre5}the typical RAM size in the 1990's,
-but [below]{.calibre5} today's standards.
-
-With 64 bits at our disposal, we can address an amount of memory that is
-huge even by today's standards: it's 2^64^ B = 16EiB (where 1 EiB =
-1,024 PiB = 1,048,576 TiB) while the RAM size in contemporary personal
-computers rarely exceeds 32 GiB, Therefore, in practice, currently used
-addressing schemes exploit a smaller number of bits, e.g, 40 (which
-covers 1 TiB) or, in some processors of AMD64 type, 52 (which covers
-4PiB),
+With 64 bits at our disposal, we can address an amount of memory that is huge even by today's standards: it's 2^64*B = 16EiB (where 1 EiB = 1,024 PiB = 1,048,576 TiB) while the RAM size in contemporary personal computers rarely exceeds 32 GiB, Therefore, in practice, currently used addressing schemes exploit a smaller number of bits, e.g, 40 (which covers 1 TiB) or, in some processors of AMD64 type, 52 (which covers 4PiB).
 
 Unfortunately, switching the bit-length of processors from 32 to 64 required not only adjusting the internal architecture (registers size, but also buses, memory etc,), but also sever changes on the software side. It has caused e.g, development of new, significantly different versions of operating systems (for example, starting from the XP version, Microsoft used to prepare _separate_ editions of Windows for the 32-bit architecture and for the 64-bit architecture; only Windows 11 (from 2021) is purposed exclusively for the 64-bit machines). Even more sophisticated applications (like an internet browser) have separate versions depending on the architecture. Similarly, input/output device drivers depend on the bit-length.
 
