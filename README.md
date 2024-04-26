@@ -871,17 +871,13 @@ thing is that [assemblers ]give the programmer [direct access
 ]to specific registers (though, as we\'ll see in a moment,
 not to all of them).
 
-#### []{#main-6.xhtml#bookmark2}Register types in the x86 architecture 
+#### Register types in the x86 architecture 
 
-[General purpose registers]
+##### General purpose registers
 
-The most frequently used class of registers are the [general purpose
-registers, ]which can store data, as well as addresses of RAM
-memory cells from which the data should be fetched (or to which should
-be sent).
-
+The most frequently used class of registers are the _general purpose registers_, which can store data, as well as addresses of RAM memory cells from which the data should be fetched (or to which should be sent).
+  
 In the x86 family, these look as follows:
-
 
 ![](./main-18.jpg)
 
@@ -905,8 +901,7 @@ in segmented mode)
 
 Figure 7. The general purpose registers in the x86 architecture.
 
-(Role descriptions taken from: https
-://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture)
+(Role descriptions taken from: [https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture](https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture))
 
 In this picture, directly neighboring rows do not represent separate memory but just another way of viewing the same memory. For example, EAX is physically _a part of_  RAX, consisting of its 32 _lower_ (or: _younger_) bits. Similarly, AX is the lower half of EAX, AH and AL are respectively the higher (H) and lower (L) halves of AX, EDI is the lower half of RDI, etc.
 
