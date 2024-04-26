@@ -370,7 +370,49 @@ The comparison of both considered models is summarized below.
 ![](./main-6.jpg){.calibre13}
 :::
 
+
+
+
 # Processor and programs  
+
+> [!NOTE]
+> Here is a summary of the key points from the lecture on processors and programs:
+
+> Processors execute instructions in a pipelined fashion, with 5 main phases: Instruction Fetch (IF), Instruction Decode (ID), Execute (EX), Memory Access (MA), and Write Back (WB). Pipelining allows executing different phases of multiple instructions simultaneously to improve performance.
+
+> Hazards like data hazards, control hazards, and structural hazards can stall the pipeline. Techniques like forwarding, speculative execution, and out-of-order execution are used to resolve hazards and keep the pipeline running efficiently.
+
+> Superscalar processors can execute instructions in parallel using multiple execution units. However, this increases complexity in handling hazards.
+
+> The operating system schedules processes and provides concurrency by rapidly switching the processor between multiple running processes. Interrupts are used to suspend the current process and invoke the OS scheduler.
+
+> Amdahl's Law states that the speedup of a program using multiple processors is limited by the sequential fraction of the program. If 
+> 𝑃
+P percent of a program can be parallelized, the maximum speedup using 
+𝑁
+N processors is 
+100
+100
+−
+𝑃
++
+𝑃
+𝑁
+100−P+ 
+N
+P
+​
+ 
+100
+​
+ .
+
+> The x86 processor architecture provides various registers - general purpose registers, segment registers, floating point and vector registers, flags, and the instruction pointer. Some are accessible to programmers via assembly language.
+
+> As processors evolved from 16-bit to 32-bit to 64-bit, new operating modes were introduced to provide backwards compatibility while enabling access to more memory. The processor runs in real, protected, long or legacy modes depending on the OS.
+
+> In summary, modern processors use advanced techniques like pipelining, parallelism and out-of-order execution to maximize performance, while handling complex issues like hazards and context switching between processes. Understanding the processor architecture is important for optimizing performance, especially in low-level programming.
+
   
 In this lecture, we continue discussing the procesor. This time, however, we will focus less on its hardware structure, and more on managing execution of whole sequences of orders and the most important optimization techniques used there.
   
