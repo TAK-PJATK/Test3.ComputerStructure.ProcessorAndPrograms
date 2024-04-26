@@ -19,7 +19,7 @@ In the lecture "Integrated circuits", we dealt with logic gates and larger digit
 Figure 1. The look of an example integrated circuit.  
 (Source: https://en.wikipedia.org/wiki/Integrated_circuit)  
 
-On the picture, we see a cover, hiding the proper circuit, made mostly of silicon. Here, physical characteristics are crucial for the e?ciency of computation. We need a clean silicon crystal, sliced into so-called _wafers_, of thickness 1 mm or less. On that, the transistors building up the whole circuit are placed.
+On the picture, we see a cover, hiding the proper circuit, made mostly of silicon. Here, physical characteristics are crucial for the efficiency of computation. We need a clean silicon crystal, sliced into so-called _wafers_, of thickness 1 mm or less. On that, the transistors building up the whole circuit are placed.
 
 ## Miniaturization  
   
