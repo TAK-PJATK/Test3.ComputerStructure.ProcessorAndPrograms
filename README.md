@@ -961,38 +961,18 @@ addressing schemes exploit a smaller number of bits, e.g, 40 (which
 covers 1 TiB) or, in some processors of AMD64 type, 52 (which covers
 4PiB),
 
-Unfortunately, switching the bit-length of processors from 32 to 64
-required not only adjusting the internal architecture (registers size,
-but also buses, memory etc,), but also sever changes on the software
-side. It has caused e.g, development of new, significantly different
-versions of operating systems (for example, starting from the XP
-version, Microsoft used to prepare [separate]{.calibre5} editions
-of Windows for the 32-bit architecture and for the 64-bit architecture;
-only Windows 11 (from 2021) is purposed exclusively for the 64-bit
-machines). Even more sophisticated applications (like an
-internet browser) have separate versions depending on the architecture.
-Similarly, input/output device drivers depend on the bit-length.
+Unfortunately, switching the bit-length of processors from 32 to 64 required not only adjusting the internal architecture (registers size, but also buses, memory etc,), but also sever changes on the software side. It has caused e.g, development of new, significantly different versions of operating systems (for example, starting from the XP version, Microsoft used to prepare _separate_ editions of Windows for the 32-bit architecture and for the 64-bit architecture; only Windows 11 (from 2021) is purposed exclusively for the 64-bit machines). Even more sophisticated applications (like an internet browser) have separate versions depending on the architecture. Similarly, input/output device drivers depend on the bit-length.
 
-As suggested by Figure 7, analogous changes of bit-length happened also
-earlier: from 8 to 16, and then to 32, The latter of these changes took
-place in the early 1990's (and was also forced by the growing size of
-available RAM --- even though techniques for addressing more than 2^16^B
-= 64kiB were developed, after exceeding a few megabytes they became
-insufficient or ineffective). At that point, to ensure backward
-compatibility, 3 processor operating modes were introduced:
-
-[•    Real mode ]{.calibre4}--- in which the processor operates in the
-same way as an Intel 8086 model (which was introduced to the market in
-1978!)
-
-[•    Protected mode ]{.calibre4}--- the default mode for 32-bit processors. It allows using 32-bit address registers and, consequently, using a larger address space than available in the real mode. The name [protected]{.calibre5} reflects the fact that this mode assigns a separate memory area to each process, which is by default unavailable to all other processes. That's a form of processor support for multitasking, as it causes that a faulty program (referring to "foreign" memory locations) will not be able to harm other programs, (Of course, writing viruses is still possible, but it became harder than it used to be in the real mode),  
+As suggested by Figure 7, analogous changes of bit-length happened also earlier: from 8 to 16, and then to 32, The latter of these changes took place in the early 1990's (and was also forced by the growing size of available RAM --- even though techniques for addressing more than 2^16*B = 64kiB were developed, after exceeding a few megabytes they became insufficient or ineffective). At that point, to ensure backward compatibility, 3 **processor operating modes** were introduced:  
   
-[•    Virtual 8086 mode ]{.calibre4}--- essentially a sub-mode of the protected mode, in which it's possible to run programs written for 16-bit machines. This also simulates the behavior of an Intel 8086 model; however, the differences from the real mode (including e.g, handling input/output ports) make it possible to run multiple processes at once, including both 16-bit and 32-bit ones.  
+* Real mode --- in which the processor operates in the same way as an Intel 8086 model (which was introduced to the market in 1978!)
+
+* Protected mode --- the default mode for 32-bit processors. It allows using 32-bit address registers and, consequently, using a larger address space than available in the real mode. The name _protected_ reflects the fact that this mode assigns a separate memory area to each process, which is by default unavailable to all other processes. That's a form of processor support for multitasking, as it causes that a faulty program (referring to "foreign" memory locations) will not be able to harm other programs, (Of course, writing viruses is still possible, but it became harder than it used to be in the real mode).
   
-Similarly, the switch from the 32-bit to the 64-bit architecture has led to creating 2 more operating modes (each with some sub-types). The details are shown below:
-
-::: cbj_banner
-![](./main-19.jpg){.calibre13}
-:::
-
+* Virtual 8086 mode --- essentially a sub-mode of the protected mode, in which it's possible to run programs written for 16-bit machines. This also simulates the behavior of an Intel 8086 model; however, the differences from the real mode (including e.g, handling input/output ports) make it possible to run multiple processes at once, including both 16-bit and 32-bit ones.  
+  
+Similarly, the switch from the 32-bit to the 64-bit architecture has led to creating 2 more operating modes (each with some sub-types). The details are shown below:  
+  
+[![Figure 8.](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/ModeSubmode.PNG?raw=true)](https://en.wikipedia.org/wiki/Integrated_circuit)  
+  
 By default, the processor operates in the Long mode, which can support programs written for the 64-bit or 32-bit architectures, or even 16-bit programs (though only those purposed for the protected mode). Programs written for the 16-bit real mode (as well as virtual, though that's a rare case) will not be supported. Even though programs from 1980's are now very seldom used in home applications, the code dating back to those types does still appear inside operating systems, or in some other specialistic applications (e.g, in the numeric computations used by astronomers).
