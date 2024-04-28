@@ -14,10 +14,10 @@ The following lectures will expand some topics appearing on this one (e.g. "how 
   
 In the lecture "Integrated circuits", we dealt with logic gates and larger digital circuits built from them. In these years, logic gates are esentially no more manufactured as separate products; instead, the smallest building blocks are integrated circuits which combine multiple gates according to a particular application: starting from the simpler ones described in the previous lecture (adders, flip-flops, comparators etc.), through much more complex ones. A typical integrated circuit available in an electronic shop will now look like this:
 
-[![Figure 1. The look of an example integrated circuit.
-(Source: https://en.wikipedia.org/wiki/Integrated_circuit)](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/IC.png?raw=true)](https://en.wikipedia.org/wiki/Integrated_circuit)  
+![Figure 1. The look of an example integrated circuit.
+(Source: https://en.wikipedia.org/wiki/Integrated_circuit)](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/images/IC.png?raw=true)
 Figure 1. The look of an example integrated circuit.  
-(Source: https://en.wikipedia.org/wiki/Integrated_circuit)  
+(Source: [https://en.wikipedia.org/wiki/Integrated_circuit](https://en.wikipedia.org/wiki/Integrated_circuit))  
 
 On the picture, we see a cover, hiding the proper circuit, made mostly of silicon. Here, physical characteristics are crucial for the efficiency of computation. We need a clean silicon crystal, sliced into so-called _wafers_, of thickness 1 mm or less. On that, the transistors building up the whole circuit are placed.
 
