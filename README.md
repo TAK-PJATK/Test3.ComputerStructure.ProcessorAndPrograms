@@ -46,7 +46,7 @@ We will now present a simplified model of a computer which will not touch e.g, t
   
 The simplest scheme of computer structure may look as follows:  
 
-![Figure 2. The general structure of a computer.](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/TheGeneralStructureofacomputer.PNG?raw=true)   
+![Figure 2. The general structure of a computer.](https://github.com/TAK-PJATK/Test3.ComputerStructure.ProcessorAndPrograms/blob/main/images/TheGeneralStructureofacomputer.PNG?raw=true)   
 Figure 2. The general structure of a computer.  
   
 ### Processor  
